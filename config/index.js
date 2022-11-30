@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/biz-admin': {
-        // target: 'http://120.27.242.253',
-        target: 'http://172.16.5.134:8082',
+        target: 'http://120.27.242.253',
+        // target: 'http://172.16.5.134:8082',
         changeOrigin: true,
         pathRewrite: {}
       },

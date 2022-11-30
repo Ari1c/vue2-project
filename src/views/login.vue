@@ -33,7 +33,7 @@
               <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon"/>
             </el-input>
           </el-form-item>
-          <!-- <el-form-item prop="code" v-if="captchaOnOff">
+          <el-form-item prop="code" v-if="captchaOnOff">
             <el-input
               v-model="loginForm.code"
               auto-complete="off"
@@ -46,7 +46,7 @@
             <div class="login-code">
               <img :src="codeUrl" @click="getCode" class="login-code-img"/>
             </div>
-          </el-form-item> -->
+          </el-form-item>
           <el-checkbox
             v-model="loginForm.rememberMe"
             style="margin: 0px 0px 25px 0px"
@@ -129,16 +129,16 @@
       },
     },
     created() {
-      // this.getCode();
+      this.getCode();
       this.getCookie();
     },
     methods: {
-      // getCode() {
-      //   let value = local_uuid();
-      //   getCodeImg({value}).then((res) => {
-      //     this.codeUrl = "data:image/gif;base64," + res;
-      //   });
-      // },
+      getCode() {
+        let value = local_uuid();
+        getCodeImg({value}).then((res) => {
+          this.codeUrl = "data:image/gif;base64," + res;
+        });
+      },
       getCookie() {
         const username = localStorage.username;
         const password = localStorage.password;
@@ -170,7 +170,7 @@
               .catch(() => {
                 this.loading = false;
                 if (this.captchaOnOff) {
-                  // this.getCode();
+                  this.getCode();
                 }
               });
           }
