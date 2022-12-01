@@ -36,7 +36,7 @@
 
       <!-- 添加或修改参数配置对话框 -->
       <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
-        <el-form ref="form" :model="form" :rules="rules" v-loading="isLoading" label-width="80px">
+        <el-form ref="form" :model="form" v-loading="isLoading" label-width="80px">
           <div class="po-header">
             <el-row class="dialog-row-header">
               <el-col :span="2">支路</el-col>
@@ -50,12 +50,12 @@
             </el-row>
           </div>
           <div class="po-content">
-            <el-row class="dialog-row-content" v-for="item in this.form.settings" :key="item.outletIndex">
+            <el-row class="dialog-row-content" v-for="item in form.settings" :key="item.outletIndex">
               <el-col :span="2">{{item.outletIndex}}</el-col>
               <el-col :span="10">
                 <!-- :rules="rules.currentUpperLimit" -->
                 <!-- :prop="'settings.'+ item.outletIndex + '.currentUpperLimit'" -->
-                <el-form-item label-width="0" prop="currentUpperLimit">
+                <el-form-item :prop="'settings.'+ item.outletIndex + '.currentUpperLimit'" :rules="rules.currentUpperLimit" label-width="0">
                   <el-input type="number" v-model="item.currentUpperLimit" :min="1" :max="2147483647">
                     <template slot="append">A</template>
                   </el-input>
@@ -104,7 +104,9 @@ import {
     data() {
       const validateUpper = (rules, value, cb) => {
         console.log('rules: ---', rules, value)
-        if (value < 10) {
+        const fieldIndex = rules.field.split('.')[1]
+        const { currentLowerLimit } = this.form.settings.find(item => `${item.outletIndex}` === fieldIndex);
+        if (value < currentLowerLimit) {
           cb('aaaa')
         }
 
