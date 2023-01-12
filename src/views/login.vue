@@ -11,7 +11,7 @@
           :rules="loginRules"
           class="login-form"
         >
-          <h2 class="title">新型智能电源精细化管理系统</h2>
+          <h2 class="title">管理系统</h2>
           <el-form-item prop="username">
             <el-input
               v-model="loginForm.username"
@@ -162,6 +162,8 @@
               localStorage.removeItem("password");
               localStorage.removeItem("rememberMe");
             }
+
+            this.$router.push({path: this.redirect || "/"})
             this.$store
               .dispatch("Login", this.loginForm)
               .then(() => {

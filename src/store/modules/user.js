@@ -31,12 +31,16 @@ const user = {
     // 获取用户信息
     GetInfo({commit, state}) {
       return new Promise((resolve, reject) => {
-        getInfo().then(res => {
-          commit('SET_USER', res.data)
-          resolve(res)
-        }).catch(error => {
-          reject(error)
-        })
+        var _ = {account:"admin",createTime:"2021-11-08 21:10:38",id:1,name:"管理员",nickName:"管理员",phone:"137****1552",roleId:1}
+        commit('SET_USER', _);
+        resolve(_);
+
+        // getInfo().then(res => {
+        //   commit('SET_USER', res.data)
+        //   resolve(res)
+        // }).catch(error => {
+        //   reject(error)
+        // })
       })
     },
 

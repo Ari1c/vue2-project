@@ -27,7 +27,7 @@
           vnodes.push(<span slot='title'>{(title)}</span>)
         }
       }
-      console.log(vnodes, 'vnodes');
+
       return vnodes
     }
   }

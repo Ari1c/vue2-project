@@ -10,14 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/biz-admin': {
-        target: 'http://120.27.242.253',
-        // target: 'http://172.16.5.134:8082',
-        changeOrigin: true,
-        pathRewrite: {}
-      },
-    },
+    // proxyTable: {
+    //   '/biz-admin': {
+    //     target: 'http://120.27.242.253',
+    //     // target: 'http://172.16.5.134:8082',
+    //     changeOrigin: true,
+    //     pathRewrite: {}
+    //   },
+    // },
 
     // Various Dev Server settings
     host: '127.0.0.1', // can be overwritten by process.env.HOST
